@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title><!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.0.1/firebase.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-analytics.js"></script>
+
+</head>
+<body>
+Hello world!    <br>
+<p id="p1"></p>
+
+</body>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyAZFtoOAhpIu1Y96McMpQkxY0eaAhcLWWo",
+    authDomain: "arduino-mqtt99.firebaseapp.com",
+    databaseURL: "https://arduino-mqtt99-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "arduino-mqtt99",
+    storageBucket: "arduino-mqtt99.appspot.com",
+    messagingSenderId: "184222501652",
+    appId: "1:184222501652:web:e96dafab083cd8f4415001"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+
+  var dataRef = firebase.database().ref("report/");
+    dataRef.on('value', function (snapshot) {
+        var arr = snapshot.val();
+        console.log(arr);
+        let txt = "";
+for (let x in arr) {
+    for (let y in arr[x]){
+          txt += arr[x][y] + " ";
+
+    }
+  {#txt += arr[x] + " ";#}
+
+};
+        document.getElementById("p1").innerHTML = txt;
+    });
+</script>
+
+
+
+</html>
